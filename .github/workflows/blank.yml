@@ -11,23 +11,22 @@ on:
 jobs:
   update-readme:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write  # NECESARIO para modificar el README.md
     steps:
       - name: Clonar el repositorio
         uses: actions/checkout@v4
 
-      - name: Descargar estadísticas de lenguajes
-        run: |
-          curl -o top-langs.svg "https://github-readme-stats.vercel.app/api/top-langs/?username=JoseAn2004&langs_count=10&layout=compact&theme=radical"
+      - name: Generar estadísticas de lenguajes
+        uses: anuraghazra/github-readme-stats@latest
+        with:
+          username: JoseAn2004
+          cache_seconds: 86400  # Actualiza cada 24 horas
 
-      - name: Modificar README.md con la imagen
-        run: |
-          sed -i '/<!-- STATS -->/!b;n;c![Lenguajes más usados](top-langs.svg)' README.md
-
-      - name: Subir cambios si es necesario
+      - name: Verificar cambios en README.md
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md top-langs.svg
-          git diff --quiet && git diff --staged --quiet || git commit -m "Actualizar estadísticas de lenguajes"
+          git add README.md
+          git diff --cached --quiet || git commit -m "Actualizar estadísticas de lenguajes"
           git push
