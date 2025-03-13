@@ -13,12 +13,7 @@
 
 ### 💻 Desarrollo Web
 - 🟨 **JavaScript**
-- 🔵 **TypeScript**
-- ⚛ **React.js**
-- 🌐 **Next.js**
 - 🎨 **CSS / TailwindCSS**
-- 🏗 **Node.js**
-
 ### 📱 Desarrollo Móvil
 - 💙 **Flutter (Dart)**
 - 📱 **React Native**
@@ -47,7 +42,7 @@
 
 ### 🔹 Lenguajes más usados en todos mis proyectos
 
-![Lenguajes más usados](https://github-readme-stats.vercel.app/api/top-langs/?username=JoseAn2004&langs_count=100&layout=default&theme=radical)
+![Lenguajes más usados](https://github-readme-stats.vercel.app/api/top-langs/?username=JoseAn2004&langs_count=100&theme=radical)
 
 ### 🔹 Actividad y estadísticas
 
