@@ -6,25 +6,28 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:  # Permite ejecutarlo manualmente desde la pestaña "Actions"
+  workflow_dispatch:  # Permite ejecutarlo manualmente desde "Actions"
 
 jobs:
   update-readme:
     runs-on: ubuntu-latest
+
     steps:
       - name: Clonar el repositorio
         uses: actions/checkout@v4
 
-      - name: Generar estadísticas de lenguajes
-        uses: anuraghazra/github-readme-stats@latest
-        with:
-          username: JoseAn2004
-          cache_seconds: 86400  # Actualiza cada 24 horas
+      - name: Descargar estadísticas de lenguajes
+        run: |
+          curl -o top-langs.svg "https://github-readme-stats.vercel.app/api/top-langs/?username=JoseAn2004&langs_count=10&layout=compact&theme=radical"
+
+      - name: Modificar README.md con la imagen
+        run: |
+          sed -i '/<!-- STATS -->/!b;n;c![Lenguajes más usados](top-langs.svg)' README.md
 
       - name: Subir cambios si es necesario
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md || echo "No hay cambios"
-          git commit -m "Actualizar estadísticas de lenguajes" || echo "Nada nuevo que actualizar"
+          git add README.md top-langs.svg
+          git diff --quiet && git diff --staged --quiet || git commit -m "Actualizar estadísticas de lenguajes"
           git push
