@@ -47,7 +47,7 @@
 
 ### 🔹 Lenguajes más usados en todos mis proyectos
 
-![Lenguajes más usados](https://github-readme-stats.vercel.app/api/top-langs/?username=JoseAn2004&langs_count=10&layout=compact&theme=radical)
+![Lenguajes más usados](https://github-readme-stats.vercel.app/api/top-langs/?username=JoseAn2004&langs_count=100&layout=default&theme=radical)
 
 ### 🔹 Actividad y estadísticas
 
